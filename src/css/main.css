@@ -4,7 +4,7 @@ Fonts
 ===============
 */
 /* @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap"); */
-
+/* you can import google fonts here, but a better solution is to prefetch it in gatsby-config */
 /*
 =============== 
 Variables

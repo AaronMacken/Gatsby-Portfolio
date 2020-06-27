@@ -10,6 +10,7 @@ export default ({ data }) => {
   // when we run a page query, the data is accessible via props.data
   const {
     allStrapiProjects: { nodes: projects },
+    allStrapiBlogs: { nodes: blogs },
   } = data
 
   return (
@@ -21,6 +22,7 @@ export default ({ data }) => {
       a title for the top of the page, and a showLink prop, 
       which uses boolean logic to determine if a link will be at the bottom of the page to go to /projects */}
       <Projects projects={projects} title="featured projects" showLink />
+      <Blogs blogs={blogs} title="Latest Blogs" showLink />
     </Layout>
   )
 }
@@ -49,6 +51,25 @@ export const query = graphql`
           title
         }
         id
+      }
+    }
+
+    allStrapiBlogs(sort: { fields: date, order: DESC }, limit: 3) {
+      nodes {
+        slug
+        content
+        desc
+        date(formatString: "MM/DD/YYYY")
+        id
+        title
+        category
+        image {
+          childImageSharp {
+            fluid {
+              src
+            }
+          }
+        }
       }
     }
   }
